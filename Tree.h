@@ -2,38 +2,51 @@
 #include<algorithm>
 
 using namespace std;
-#define MAX 10
+#define MAX 100
 #define rep(i,m,n) for(int i=m;i<n;i++)
+
 struct Node
 {
-  int i;
-  Node *lt;
-  Node *rt;
+  int data;
+  Node *left;
+  Node *right;
 };
 
+/**
+ * Node * 
+ * BuildBinaryTree(int *arr,int p,int q) 
+ * 
+ * @brief   This function recursively create Binary Tree from an array of integers
+ * @arg     This function takes a pointer to an integer array, array start index and array end index
+ * @return  This function returns pointer to Tree created by function, which is of type Node
+ * 
+ **/
 Node * BuildBinaryTree(int *arr,int p,int q)
 {
     Node *temp = new Node();
-    if(p<q)
+    if(p < q)
     {
         int mid = p + (q-p)/2;
-        temp->i = arr[mid];
+        temp->data = arr[mid];
+        
+        //If mid is equal to p then left child of p is NULL
         if(mid != p)
-            temp->lt = BuildBinaryTree(arr,p,mid-1);
+            temp->left = BuildBinaryTree(arr,p,mid-1);
         else
-            temp->lt = NULL;
+            temp->left = NULL;
 
-        temp->rt = BuildBinaryTree(arr,mid+1,q);
+        temp->right = BuildBinaryTree(arr,mid+1,q);
         return temp;
     }
     else
     {
-        temp->i = arr[p];
-        temp->lt = NULL;
-        temp->rt = NULL;
+        temp->data = arr[p];
+        temp->left = NULL;
+        temp->right = NULL;
         return  temp;
     }
 }
+
 int Check(Node *node, int m, int c)
 {
     if(c== -1)
@@ -65,6 +78,15 @@ int Check(Node *node, int m, int c)
         return m;
 
 }
+
+/**
+ *void 
+ *Read(Node *node)
+ * 
+ * @brief   This function prints inorder traversal of supplied binary tree root pointer
+ * @arg     This function takes a pounetr of Node type.
+ * @return  This function returns nothing.
+**/
 void Read(Node *node)
 {
     if(node != NULL)
@@ -75,14 +97,13 @@ void Read(Node *node)
     }
 }
 
+
 /**
-int
-BTIterativeHeight(Node *root)
-
-@brief      This is an iterative procedure to calculate height of Binary Tree
-@arg        A pointer of Node type
-@return     An integral height of a Binary Tree
-
+ * int
+ * BTIterativeHeight(Node *root)
+ * @brief      This is an iterative procedure to calculate height of Binary Tree
+ * @arg        A pointer of Node type
+ * @return     An integral height of a Binary Tree
 **/
 
 int
