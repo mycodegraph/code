@@ -1,9 +1,9 @@
 #include<iostream>
 #include<algorithm>
+#include"Tree.h"
 
 using namespace std;
-#define MAX 100
-#define rep(i,m,n) for(int i=m;i<n;i++)
+
 
 struct Node
 {
