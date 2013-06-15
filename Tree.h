@@ -47,24 +47,32 @@ Node * BuildBinaryTree(int *arr,int p,int q)
     }
 }
 
+/**
+ * int
+ * Check(Node *node, int m, int c)
+ * 
+ * @brief   This function checks whether supplied binary tree is BST or not
+ * @arg     Ths function takes pointer to root node of type Node, comparison int and checker int
+ * @return  This function returns -1 if given tree is not BST 
+**/
 int Check(Node *node, int m, int c)
 {
-    if(c== -1)
+    if(c == -1)
         return -1;
     if(node != NULL)
     {
-        m = Check(node->lt, m, 0);
+        m = Check(node->left, m, 0);
         if(m <= node->i)
         {
-            m = node->i;
+            m = node->data;
         }
         else
         {
             c = -1;
             return -1;
         }
-        m = Check(node->rt, m, 0);
-        if(node->i <= m)
+        m = Check(node->right, m, 0);
+        if(node->data <= m)
         {
             return m;
         }
@@ -142,6 +150,15 @@ BTIterativeHeight(Node *root)
     return height;
 }
 
+
+/**
+ * int
+ *  BTRecursiveHeight(Node *root)
+ * @brief      This is a recursive procedure to calculate height of Binary Tree
+ * @arg        A pointer of Node type
+ * @return     An integral height of a Binary Tree
+**/
+
 int BTRecursiveHeight(Node *node)
 {
     if(node == NULL) return 0;
@@ -149,15 +166,23 @@ int BTRecursiveHeight(Node *node)
 
 }
 
-Node *search(Node *root,int i)
+/**
+ * Node *
+ * Search(Node *root,int i)
+ * 
+ * @brief     This function searches for Node with particular value in a BST
+ * @arg       This function takes root pointer node of type Node and integral value to serach for node in tree
+ * @return    This function returns Node corresponding to value else returns NULL
+**/
+Node *Search(Node *root,int i)
 {
     if(root == NULL) return NULL;
 
-    if(root->i == i) return root;
-    if(i < root->i)
-        return search(root->lt,i);
+    if(root->data == i) return root;
+    if(i < root->data)
+        return Search(root->left,i);
     else
-        return search(root->rt,i);
+        return Search(root->right,i);
 
 }
 
