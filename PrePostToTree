@@ -1,0 +1,60 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+struct Node
+{
+    char c;
+    Node *left,*right;
+};
+
+Node * regenerateTree(string pre, string post)
+{
+    Node *n = new Node();
+    int i;
+    if(pre.size() == 1 ||  post.size() == 1)
+    {
+        n->c = pre[0];
+        n->left = n->right = NULL;
+        return n;
+    }
+
+    i = post.size()-1;
+    while(pre[1] != post[i] && i >= 0 ) i--;
+
+    if(i >= 0)
+    {
+        n->c = pre[0];
+        n->left = regenerateTree(pre.substr(1,i+1),post.substr(0,i+1));
+        n->right = regenerateTree(pre.substr(i+2,pre.size()-(i+2)),post.substr(i+1,post.size()-(i+2)));
+    }
+    else
+    {
+        return NULL;
+    }
+    return n;
+}
+
+void Read(Node *node)
+{
+    if(node != NULL)
+    {
+        Read(node->left);
+        cout<<node->c<<" ";
+        Read(node->right);
+    }
+}
+
+
+int main()
+{
+    Node *root;
+    string pre,post;
+
+    cin >> pre;
+    cin >> post;
+    root = regenerateTree( pre, post);
+
+    Read(root);
+}
+
