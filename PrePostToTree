@@ -11,7 +11,7 @@ struct Node
 };
 **/
 
-Node * regenerateTree(string pre, string post)
+Node * RegenerateTree(string pre, string post)
 {
     Node *n = new Node();
     int i;
@@ -28,8 +28,8 @@ Node * regenerateTree(string pre, string post)
     if(i >= 0)
     {
         n->c = pre[0];
-        n->left = regenerateTree(pre.substr(1,i+1),post.substr(0,i+1));
-        n->right = regenerateTree(pre.substr(i+2,pre.size()-(i+2)),post.substr(i+1,post.size()-(i+2)));
+        n->left = RegenerateTree(pre.substr(1,i+1),post.substr(0,i+1));
+        n->right = RegenerateTree(pre.substr(i+2,pre.size()-(i+2)),post.substr(i+1,post.size()-(i+2)));
     }
     else
     {
@@ -39,18 +39,6 @@ Node * regenerateTree(string pre, string post)
 }
 
 
-/**
-void Read(Node *node)
-{
-    if(node != NULL)
-    {
-        Read(node->left);
-        cout<<node->c<<" ";
-        Read(node->right);
-    }
-}
-**/
-
 int main()
 {
     Node *root;
@@ -58,7 +46,7 @@ int main()
 
     cin >> pre;
     cin >> post;
-    root = regenerateTree( pre, post);
+    root = RegenerateTree( pre, post);
 
     Read(root);
 }
