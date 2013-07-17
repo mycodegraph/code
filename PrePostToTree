@@ -3,11 +3,13 @@
 #include"tree.h"
 using namespace std;
 
+/**
 struct Node
 {
     char c;
     Node *left,*right;
 };
+**/
 
 Node * regenerateTree(string pre, string post)
 {
