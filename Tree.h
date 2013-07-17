@@ -6,7 +6,11 @@ This is the header file containing the declaration of primary functions related 
 
 struct Node
 {
-  int data;
+  union
+  {
+    int data;
+    char c;
+  };
   Node *left;
   Node *right;
 };
