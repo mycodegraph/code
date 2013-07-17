@@ -4,6 +4,7 @@
 
 using namespace std;
 
+/**
 
 struct Node
 {
@@ -12,7 +13,7 @@ struct Node
   Node *right;
 };
 
-/**
+
  * Node * 
  * BuildBinaryTree(int *arr,int p,int q) 
  * 
