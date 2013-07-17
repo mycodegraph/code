@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstdio>
+#include"tree.h"
 using namespace std;
 
 struct Node
@@ -35,6 +36,8 @@ Node * regenerateTree(string pre, string post)
     return n;
 }
 
+
+/**
 void Read(Node *node)
 {
     if(node != NULL)
@@ -44,7 +47,7 @@ void Read(Node *node)
         Read(node->right);
     }
 }
-
+**/
 
 int main()
 {
