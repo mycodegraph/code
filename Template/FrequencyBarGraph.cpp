@@ -20,20 +20,23 @@ int findMax(int *array, size_t _size)
     return _max;
 }
 
-void printBarChart(int *arr, int _max)
+void printBarChart(int *arr, int _max, size_t _size)
 {
     do
     {
         cout<<" ";
-        for(int i=0;i<26;i++)
+        for(int i=0;i<_size;i++)
         {
-            if(_max == arr[i]) cout<<"|"<<_max<<"|";
+            if(_max == arr[i]) cout<<"|-|";
             else if(_max < arr[i]) cout<<"| |";
             else cout<<"   ";
         }
         cout<<endl;
     }while(_max--);
-    cout<<"  ";for(int i=0;i<26;i++)cout<<(char)(i+'a')<<"  ";
+    
+    cout<<"  ";
+    
+    for(int i=0;i<_size;i++)cout<<(char)(i+'a')<<"  ";
 }
 
 int main()
@@ -45,13 +48,11 @@ int main()
 
   while(_break == false && cin >> buff) (buff >= 'a' && buff <= 'z')?(arr[buff-'a']++):(_break=true);
 
-  printBarChart(arr,findMax(arr, 26));
+  printBarChart(arr,findMax(arr, 26), 26);
 
   cout<<endl;
 
   cout<<"LETTER\t\tFrequency\n";
   for(int i=0;i<26;i++) cout<<(char)(i+'a')<<"\t\t"<<(int)arr[i]<<endl;
-
- //while(!(_break))(0)?_break=0:(_break=1);
 
 }
